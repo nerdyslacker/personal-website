@@ -1,0 +1,148 @@
+---
+title: "Monitor cronjob with Uptime Kuma Push type"
+description: "Recently I made a script to monitor my postgres backup cronjob and show the status in Uptime Kuma dashboard"
+image: "/images/blog/kuma.png"
+date: "2025-01-08"
+author: "nerdyslacker"
+---
+
+# Automating PostgreSQL Backups to MinIO with Notification Integration
+
+Backups are an essential part of maintaining database reliability and integrity. Automating this process ensures consistent backups without manual intervention. In this post, we'll explore a script that automates PostgreSQL backups, uploads them to a MinIO server, and integrates with **Uptime Kuma** to notify about the success or failure of the backup process.
+
+---
+
+## **Overview of the Solution**
+
+The solution consists of two scripts:
+1. **Backup Script**: Automates PostgreSQL backups and uploads the backup files to MinIO.
+2. **Wrapper Script**: Executes the backup script and sends notifications to Uptime Kuma.
+
+Together, these scripts form a robust, automated system for managing backups while keeping you informed.
+
+---
+
+## **PostgreSQL Backup and Upload to MinIO**
+
+### **Features**
+- **Database Backup**: Uses `pg_dump` to create a compressed database dump.
+- **MinIO Upload**: Transfers the dump to a specified MinIO bucket using the `mc` (MinIO client) command.
+- **Cleanup**: Removes the local backup file after a successful upload.
+- **Pruning Old Backups**: Retains only the latest three backups by pruning older files.
+
+### **How It Works**
+```bash
+#!/usr/bin/env bash
+
+set -e  # Exit on error
+set -u  # Treat unset variables as an error
+
+# Constants
+BUCKET_NAME="postgres-backups"
+MINIO_ALIAS="myminio"
+
+log() {
+    echo "$(date +%F_%T) - $1"
+}
+
+decode_base64() {
+    echo "$1" | base64 --decode
+}
+
+create_backup() {
+    local temp_file="$1"
+    local db_pass="$2"
+    PGPASSWORD=$db_pass pg_dump -Fc -h localhost -U "$DB_USER" -d "$DB_NAME" > "$temp_file"
+}
+
+upload_backup() {
+    local temp_file="$1"
+    local s3_file="$2"
+    mc cp "$temp_file" "$s3_file"
+}
+
+cleanup_local_file() {
+    local temp_file="$1"
+    rm -f "$temp_file"
+}
+
+prune_old_backups() {
+    local backups_to_delete=$(mc ls "$MINIO_ALIAS/$BUCKET_NAME/" --recursive | sort -r | tail -n +4 | awk '{print $NF}')
+    for backup in $backups_to_delete; do
+        mc rm "$MINIO_ALIAS/$BUCKET_NAME/$backup"
+    done
+}
+
+main() {
+    local timestamp=$(date +%F_%T | tr ':' '-')
+    local temp_file=$(mktemp tmp.XXXXXXXXXX)
+    local s3_file="$MINIO_ALIAS/$BUCKET_NAME/backup-$timestamp.dump"
+    local db_pass=$(decode_base64 "$DB_PASS_BASE64")
+
+    create_backup "$temp_file" "$db_pass"
+    upload_backup "$temp_file" "$s3_file"
+    cleanup_local_file "$temp_file"
+    prune_old_backups
+}
+
+main
+```
+
+# Wrapper Script: Notification Integration with Uptime Kuma
+
+This script wraps around the backup script to add status monitoring and notification capabilities. It uses **Uptime Kuma** to send notifications about the backup's success or failure.
+
+### **Script Code**
+```bash
+#!/bin/bash
+
+# Base64-encoded push token for Uptime Kuma
+push_token_base64=$1
+shift || { echo "Usage: $0 <push_token_base64> [command...]" >&2; exit 1; }
+
+# Record the start time
+start_time=$(date -u +%s%3N)
+status="up"
+msg="BACKUP_SUCCEEDED"
+
+# Trap unexpected exits and update status
+trap 'status="down"; msg="BACKUP_INTERRUPTED"; send_status; exit 1' SIGINT SIGTERM EXIT
+
+# Function to execute the backup script or command
+execute_command() {
+    if [ $# -gt 0 ]; then
+        "$@"
+        return $?
+    fi
+    return 0
+}
+
+# Function to send status to Uptime Kuma
+send_status() {
+    local end_time=$(date -u +%s%3N)
+    local duration=$((end_time - start_time))
+    local push_token=$(echo "$push_token_base64" | base64 --decode)
+
+    curl --fail --no-progress-meter --retry 3 \
+        "https://monitor.example.am/api/push/$push_token?status=$status&msg=$msg&ping=$duration" 2>&1
+}
+
+# Execute the provided command and capture its exit status
+execute_command "$@"
+command_exit_code=$?
+
+# Update status and message based on the command's outcome
+if [ $command_exit_code -ne 0 ]; then
+    status="down"
+    msg="BACKUP_FAILED"
+fi
+
+# Clear the trap to avoid double execution
+trap - SIGINT SIGTERM EXIT
+
+# Send the final status to Uptime Kuma
+send_status
+
+# Exit with the same status as the executed command
+exit $command_exit_code
+```

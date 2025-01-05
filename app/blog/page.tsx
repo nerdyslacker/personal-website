@@ -1,21 +1,22 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import Sidebar from '@/components/sidebar';
 import Image from 'next/image';
 import Link from 'next/link';
-import Projects from '@/components/projects';
 import { blogs as allBlogs } from "#site/content";
 import { formatDate } from "@/lib/utils";
+import { ChevronLeft } from 'lucide-react';
 
 export default function Home() {
 
   const blogs = allBlogs
     .filter((blog) => blog.published)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 4);
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   const profile = {
     about: "Passionate full-stack developer with 7+ years of experience building scalable web applications. Focused on creating elegant solutions to complex problems.",
+
     blogPosts: blogs
   };
 
@@ -26,19 +27,13 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="absolute left-90 h-full flex-1 p-8">
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-4 text-white">About Me</h2>
-          <p className="text-zinc-400 leading-relaxed">{profile.about}</p>
-        </section>
-
-        <Projects />
-
+        
         <section className='mb-12'>
-          <h2 className="text-2xl font-bold mb-4 text-white">
-            <Link href="/blog">
-              Blog Posts
-            </Link>
-          </h2>
+          <a href="/" className="inline-flex items-center text-zinc-400 hover:text-white mb-8 group">
+            <ChevronLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
+            Back
+          </a>
+          <h2 className="text-2xl font-bold mb-4 text-white">Blog Posts</h2>
           <div className="grid grid-cols-4 gap-6">
             {profile.blogPosts.map((post, index) => (
               <Link
