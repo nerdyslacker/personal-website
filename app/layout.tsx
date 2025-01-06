@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "nerdyslacker's personal website",
-  description: "nerdyslacker's personal website",
+  title: "nerdyslacker's web room",
+  description: "nerdyslacker's web room",
 };
 
 export default function RootLayout({
@@ -24,6 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+        <link rel="alternate" type="application/rss+xml" title="nerdyslacker's web room » Feed" href="/feed/"></link>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-950`}
       >

@@ -1,18 +1,13 @@
 ---
-title: "Monitor cronjob with Uptime Kuma Push type"
-description: "Recently I made a script to monitor my postgres backup cronjob and show the status in Uptime Kuma dashboard"
+title: "Automating PostgreSQL Backups to MinIO with Notification Integration"
+description: "Backups are an essential part of maintaining database reliability and integrity. Automating this process ensures consistent backups without manual intervention..."
 image: "/images/blog/kuma.png"
-date: "2025-01-08"
+date: "2025-01-05"
 author: "nerdyslacker"
 ---
 
-# Automating PostgreSQL Backups to MinIO with Notification Integration
-
 Backups are an essential part of maintaining database reliability and integrity. Automating this process ensures consistent backups without manual intervention. In this post, we'll explore a script that automates PostgreSQL backups, uploads them to a MinIO server, and integrates with **Uptime Kuma** to notify about the success or failure of the backup process.
 
----
-
-## **Overview of the Solution**
 
 The solution consists of two scripts:
 1. **Backup Script**: Automates PostgreSQL backups and uploads the backup files to MinIO.
@@ -30,14 +25,12 @@ Together, these scripts form a robust, automated system for managing backups whi
 - **Cleanup**: Removes the local backup file after a successful upload.
 - **Pruning Old Backups**: Retains only the latest three backups by pruning older files.
 
-### **How It Works**
 ```bash
-#!/usr/bin/env bash
+#!/bin/bash
 
-set -e  # Exit on error
-set -u  # Treat unset variables as an error
+set -e
+set -u
 
-# Constants
 BUCKET_NAME="postgres-backups"
 MINIO_ALIAS="myminio"
 
@@ -88,27 +81,25 @@ main() {
 main
 ```
 
-# Wrapper Script: Notification Integration with Uptime Kuma
+# Notification Integration with Uptime Kuma
 
 This script wraps around the backup script to add status monitoring and notification capabilities. It uses **Uptime Kuma** to send notifications about the backup's success or failure.
 
-### **Script Code**
 ```bash
 #!/bin/bash
 
-# Base64-encoded push token for Uptime Kuma
+set -e
+set -u
+
 push_token_base64=$1
 shift || { echo "Usage: $0 <push_token_base64> [command...]" >&2; exit 1; }
 
-# Record the start time
 start_time=$(date -u +%s%3N)
 status="up"
 msg="BACKUP_SUCCEEDED"
 
-# Trap unexpected exits and update status
 trap 'status="down"; msg="BACKUP_INTERRUPTED"; send_status; exit 1' SIGINT SIGTERM EXIT
 
-# Function to execute the backup script or command
 execute_command() {
     if [ $# -gt 0 ]; then
         "$@"
@@ -117,7 +108,6 @@ execute_command() {
     return 0
 }
 
-# Function to send status to Uptime Kuma
 send_status() {
     local end_time=$(date -u +%s%3N)
     local duration=$((end_time - start_time))
@@ -127,22 +117,38 @@ send_status() {
         "https://monitor.example.am/api/push/$push_token?status=$status&msg=$msg&ping=$duration" 2>&1
 }
 
-# Execute the provided command and capture its exit status
 execute_command "$@"
 command_exit_code=$?
 
-# Update status and message based on the command's outcome
 if [ $command_exit_code -ne 0 ]; then
     status="down"
     msg="BACKUP_FAILED"
 fi
 
-# Clear the trap to avoid double execution
 trap - SIGINT SIGTERM EXIT
 
-# Send the final status to Uptime Kuma
 send_status
 
-# Exit with the same status as the executed command
 exit $command_exit_code
 ```
+
+## How to Use These Scripts
+
+1. **Prepare the Environment**:
+   - Install the necessary dependencies:
+     - `pg_dump` for PostgreSQL backups.
+     - `mc` (MinIO Client) for managing MinIO storage.
+     - `curl` for sending notifications to Uptime Kuma.
+
+2. **Set Environment Variables**:
+   Export the required variables before running the scripts:
+   ```bash
+   export DB_USER="your_database_username"
+   export DB_NAME="your_database_name"
+   export DB_PASS_BASE64="your_base64_encoded_database_password"
+   ```
+
+3. **Schedule Backups**: Automate the process by scheduling the wrapper script using cron:
+   ```bash
+   0 2 * * * /path/to/kuma_push.sh <push_token_base64> /path/to/pgbackup_minio.sh
+   ```

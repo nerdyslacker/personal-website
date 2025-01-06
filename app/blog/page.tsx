@@ -34,7 +34,7 @@ export default function Home() {
             Back
           </a>
           <h2 className="text-2xl font-bold mb-4 text-white">Blog Posts</h2>
-          <div className="grid grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {profile.blogPosts.map((post, index) => (
               <Link
                 href={`/${post.slug}`} // Add slug to your post data

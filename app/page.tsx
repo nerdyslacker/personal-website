@@ -15,7 +15,11 @@ export default function Home() {
     .slice(0, 4);
 
   const profile = {
-    about: "Passionate full-stack developer with 7+ years of experience building scalable web applications. Focused on creating elegant solutions to complex problems.",
+    about: `Hi, I’m Karen Sarkissian from Hadrut, Armenia. I am deeply interested in programming and philosophy, especially Stoicism, which inspires my approach to life and work.
+
+As a passionate full-stack developer with over 7 years of experience, I enjoy tackling complex challenges and crafting scalable web applications with elegant solutions that make a meaningful impact.
+
+When I’m not coding, you’ll often find me exploring ideas, reflecting on timeless philosophical principles, or looking for new ways to grow personally and professionally.`,
     blogPosts: blogs
   };
 
@@ -26,20 +30,20 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="absolute left-90 h-full flex-1 p-8">
-        <section className="mb-12">
+        <section className="mb-10 max-w-4xl">
           <h2 className="text-2xl font-bold mb-4 text-white">About Me</h2>
           <p className="text-zinc-400 leading-relaxed">{profile.about}</p>
         </section>
 
         <Projects />
 
-        <section className='mb-12'>
+        <section className='mb-10'>
           <h2 className="text-2xl font-bold mb-4 text-white">
             <Link href="/blog">
               Blog Posts
             </Link>
           </h2>
-          <div className="grid grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {profile.blogPosts.map((post, index) => (
               <Link
                 href={`/${post.slug}`} // Add slug to your post data
@@ -66,6 +70,7 @@ export default function Home() {
             ))}
           </div>
         </section>
+        <div className='h-1'></div>
       </main>
     </div>
   );

@@ -1,6 +1,6 @@
 ---
 title: "Void Linux + GNOME = 🤎"
-description: "Tutorial on how to install Void Linux with Gnome DE"
+description: "Install Void Linux and set up the GNOME desktop environment in this comprehensive guide. From essential prerequisites to optional configurations, this step-by-step tutorial ensures a smooth installation process."
 image: "/images/blog/void.jpg"
 date: "2022-10-15"
 author: "nerdyslacker"
@@ -9,27 +9,27 @@ author: "nerdyslacker"
 ### Quick Links
 
 - [Installation](#installation)
-- [Network configuration - Part 1 (wpa_supplicant)](#net_conf_part1)
-- [Update the System](#update_system)
-- [Add non-free repository](#nonfree_repo)
-- [Install recommended packages](#recommended_packs)
-- [Install development packages](#dev_packs)
-- [Desktop environment (GNOME)](#gnome)
-- [Enable required services](#required_services)
-- [Network configuration - Part 2 (Network Manager)](#net_conf_part2)
-- [Audio configuration (PulseAudio)](#audio_conf)
-- [Bluetooth configuration (BlueZ)](#bluetooth_conf)
-- [Printing support configuration](#printing_conf)
-- [Cron configuration (cronie)](#cron_conf)
-- [Notebook Power Saving configuration](#powersaving_conf)
-- [Fonts installation](#fonts_conf)
-- [Office suite (LibreOffice)](#office_suite)
-- [Internet browser installation (Firefox)](#browser)
-- [Media player (VLC)](#media_player)
-- [Backup software (Timeshift)](#backup_soft)
-- [Logging Daemon activation](#logging_daemon)
-- [Profile Sync Daemon (PSD)](#psd)
-- [Bash aliases](#aliases)
+- [Network configuration - Part 1 (wpa_supplicant)](#network-configuration---part-1-wpa_supplicant)
+- [Update the System](#update-the-system)
+- [Add non-free repository](#add-non-free-repository)
+- [Install recommended packages](#install-recommended-packages)
+- [Install development packages](#install-development-packages)
+- [Desktop environment (GNOME)](#desktop-environment-gnome)
+- [Enable required services](#enable-required-services)
+- [Network configuration - Part 2 (Network Manager)](#network-configuration---part-2-network-manager)
+- [Audio configuration (PulseAudio)](#audio-configuration)
+- [Bluetooth configuration (BlueZ)](#bluetooth-configuration)
+- [Printing support configuration](#printing-support-configuration)
+- [Cron configuration (cronie)](#cron-configuration)
+- [Notebook Power Saving configuration](#notebook-power-saving-configuration)
+- [Fonts installation](#fonts-installation)
+- [Office suite (LibreOffice)](#office-suite)
+- [Internet browser installation (Firefox)](#internet-browser-installation)
+- [Media player (VLC)](#media-player)
+- [Backup software (Timeshift)](#backup-software)
+- [Logging Daemon activation](#logging-daemon-activation)
+- [Profile Sync Daemon (PSD)](#profile-sync-daemon-psd)
+- [Bash aliases](#bash-aliases)
 
 ### Optional
 
@@ -41,19 +41,19 @@ author: "nerdyslacker"
 - [Exa (modern replacement for ‘ls’)](#exa)
 - [Dust (intuitive version of du)](#dust)
 - [Lazygit (git tui)](#lazygit)
-- [Neovim + AstroNvim](#nvim)
+- [Neovim + AstroNvim](#neovim--astronvim)
 - [OctoXBPS (xbps frontend)](#octoxbps)
 - [VSV (Void Service Manager)](#vsv)
 - [Docker](#docker)
 - [Flatpak](#flatpak)
-- [Nix package manager](#nix_pkg)
-- [Alternative Browser (Brave)](#browser_alt)
-- [Dconf Editor](#dconf)
-- [Nautilus embedded terminal](#nautilus_terminal)
+- [Nix package manager](#nix-package-manager)
+- [Alternative Browser (Brave)](#alternative-browser-brave)
+- [Dconf Editor](#dconf-editor)
+- [Nautilus embedded terminal](#nautilus-embedded-terminal)
 - [Syncthing (peer-to-peer file synchronization)](#syncthing)
-- [Sushi (Quick Look)](#sushi)
-- [Intel's Microcode](#intel_microcode)
-- [Fonts, Theme, Icons, Cursor, Extensions, Wallpaper](#theming)
+- [Sushi (Quick Look)](#gnome-sushi)
+- [Intel's Microcode](#intels-microcode)
+- [Fonts, Theme, Icons, Cursor, Extensions, Wallpaper](#fonts-theme-icons-cursor-extensions-wallpaper)
 
 ## Installation 
 

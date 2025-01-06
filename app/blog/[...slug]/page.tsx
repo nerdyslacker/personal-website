@@ -8,6 +8,7 @@ import { blogs as allBlogs } from "#site/content";
 import { formatDate } from "@/lib/utils";
 import Image from 'next/image';
 import { Mdx } from "@/components/mdx-component";
+import Comments from '@/components/comments';
 
 interface BlogPostProps {
   params: {
@@ -55,6 +56,10 @@ export async function generateStaticParams(): Promise<
 
 
 export default async function BlogPost({ params }: BlogPostProps) {
+	const repo = process.env.COMMENTS_REPO  as `${string}/${string}`;
+	const repoId = process.env.COMMENTS_REPO_ID as string;
+	const category = process.env.COMMENTS_CATEGORY as string;
+	const categoryId = process.env.COMMENTS_CATEGORY_ID as string;
 
   const post = await getBlogPostFromParams(params);
 
@@ -84,6 +89,19 @@ export default async function BlogPost({ params }: BlogPostProps) {
               <Calendar className="w-4 h-4 mr-2" />
               {formatDate(post.date)}
             </span>
+              {post.author && (
+                <div className="flex items-center space-x-2">
+                  <Image
+                    src="/avatar.jpg"
+                    alt={post.author}
+                    width={32}
+                    height={32}
+                    className="rounded-full bg-white"
+                  />
+                  <p className="font-medium text-muted-foreground">@{post.author}</p>
+                </div>
+              )}
+
             {/* <span className="flex items-center">
               <Clock className="w-4 h-4 mr-2" />
               {post.readTime}
@@ -117,7 +135,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
 
         {/* Comments Section */}
         <div className="mt-8">
-
+          <Comments repo={repo} repoId={repoId} category={category} categoryId={categoryId} />
         </div>
       </main>
     </div>

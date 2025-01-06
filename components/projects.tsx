@@ -31,9 +31,9 @@ const Projects = () => {
   ];
 
   return (
-    <section className="mb-12">
+    <section className="mb-10">
         <h2 className="text-2xl font-bold mb-4 text-white">Projects</h2>
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {projects.map((project) => (
             <Card key={project.title} className="bg-zinc-900 border-zinc-800">
             <CardContent className="pt-6">
