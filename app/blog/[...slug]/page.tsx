@@ -11,9 +11,9 @@ import { Mdx } from "@/components/mdx-component";
 import Comments from '@/components/comments';
 
 interface BlogPostProps {
-  params: {
+  params: Promise<{
     slug: string[];
-  };
+  }>;
 }
 
 async function getBlogPostFromParams(params: BlogPostProps["params"]) {
@@ -46,14 +46,13 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams(): Promise<
-  BlogPostProps["params"][]
-> {
-  return allBlogs.map((blog: { slugAsParams: string; }) => ({
-    slug: blog.slugAsParams.split("/"),
-  }));
-}
-
+// export async function generateStaticParams(): Promise<
+//   BlogPostProps["params"][]
+// > {
+//   return allBlogs.map((blog: { slugAsParams: string; }) => ({
+//     slug: blog.slugAsParams.split("/"),
+//   }));
+// }
 
 export default async function BlogPost({ params }: BlogPostProps) {
 	const repo = process.env.COMMENTS_REPO  as `${string}/${string}`;
