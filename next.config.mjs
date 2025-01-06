@@ -7,6 +7,7 @@ const ContentSecurityPolicy = `
     img-src * blob: data:;
     media-src 'none';
     frame-src giscus.app github.com;
+    frame-ancestors giscus.app github.com;
     connect-src *;
     font-src 'self';
 `;
