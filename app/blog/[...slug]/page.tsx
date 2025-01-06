@@ -55,10 +55,10 @@ export async function generateMetadata({
 // }
 
 export default async function BlogPost({ params }: BlogPostProps) {
-	const repo = process.env.COMMENTS_REPO  as `${string}/${string}`;
-	const repoId = process.env.COMMENTS_REPO_ID as string;
-	const category = process.env.COMMENTS_CATEGORY as string;
-	const categoryId = process.env.COMMENTS_CATEGORY_ID as string;
+	const repo = process.env.NEXT_PUBLIC_COMMENTS_REPO  as `${string}/${string}`;
+	const repoId = process.env.NEXT_PUBLIC_COMMENTS_REPO_ID as string;
+	const category = process.env.NEXT_PUBLIC_COMMENTS_CATEGORY as string;
+	const categoryId = process.env.NEXT_PUBLIC_COMMENTS_CATEGORY_ID as string;
 
   const post = await getBlogPostFromParams(params);
 

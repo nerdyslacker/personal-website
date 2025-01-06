@@ -2,7 +2,7 @@ import { build } from "velite";
 
 const ContentSecurityPolicy = `
     default-src 'self' vercel.live;
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' vercel.live vitals.vercel-insights.com;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' localhost vercel.app vercel.live vitals.vercel-insights.com;
     style-src 'self' 'unsafe-inline';
     img-src * blob: data:;
     media-src 'none';

@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Separator } from "@/components/ui/separator";
 import Image from 'next/image';
 import Link from 'next/link';
-import WebRing from './webring';
+// import WebRing from './webring';
 
 const Sidebar = () => {
   const profile = {
@@ -155,9 +155,9 @@ const Sidebar = () => {
               ))}
             </div>
           </div>
-          <div className="absolute bottom-6 w-78">
+          {/* <div className="absolute bottom-6 w-78">
             <WebRing />
-          </div>
+          </div> */}
         </div>
       </aside>
     </div>

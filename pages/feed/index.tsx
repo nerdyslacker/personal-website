@@ -3,7 +3,7 @@ import { Feed } from "feed";
 import { blogs as allBlogs } from "#site/content";
 
 const generateRssFeed = async (posts: any[]) => {
-  const site_url = process.env.SITE_URL as string;
+  const site_url = process.env.NEXT_PUBLIC_SITE_URL as string;
 
   const feed = new Feed({
     title: "nerdyslacker's web room RSS Feed",
@@ -18,7 +18,7 @@ const generateRssFeed = async (posts: any[]) => {
       email: "karyan40024@gmail.com",
       link: site_url,
     },
-    copyright: ""
+    copyright: "nerdyslacker"
   });
 
   posts.forEach((post) => {
