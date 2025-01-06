@@ -1,5 +1,3 @@
 {
-    "defaultCommentOrder": "newest",
-	"origins": ["*"],
-	"originsRegex": ["http://localhost:[0-9]+", "https?://([a-z0-9]+[.])nerdyslacker[.]dev", "https?://([a-z0-9]+[.])nerdyslacker[.]vercel[.]app"]
+    "defaultCommentOrder": "newest"
 }

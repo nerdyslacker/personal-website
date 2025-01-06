@@ -1,13 +1,11 @@
 import { build } from "velite";
 
 const ContentSecurityPolicy = `
-    default-src 'self' vercel.live;
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' localhost vercel.app vercel.live vitals.vercel-insights.com;
+    default-src 'self' vercel.live giscus.app;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' vercel.live vitals.vercel-insights.com;
     style-src 'self' 'unsafe-inline';
     img-src * blob: data:;
     media-src 'none';
-    frame-src giscus.app github.com;
-    frame-ancestors giscus.app github.com;
     connect-src *;
     font-src 'self';
 `;
