@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-import Sidebar from '@/components/sidebar';
 import Image from 'next/image';
 import Link from 'next/link';
 import Projects from '@/components/projects';
@@ -25,19 +24,16 @@ When I’m not coding, you’ll often find me exploring ideas, reflecting on tim
 
   return (
     <div className="flex min-h-screen h-full bg-zinc-950">
-      {/* Left Sidebar */}
-      <Sidebar />
-
       {/* Main Content */}
-      <main className="absolute left-90 h-full flex-1 p-8">
-        <section className="mb-10 max-w-4xl">
+      <main className="h-full flex-1 px-8">
+        <section className="mb-8 max-w-4xl">
           <h2 className="text-2xl font-bold mb-4 text-white">About Me</h2>
           <p className="text-zinc-400 leading-relaxed">{profile.about}</p>
         </section>
 
         <Projects />
 
-        <section className='mb-10'>
+        <section>
           <h2 className="text-2xl font-bold mb-4 text-white">
             <Link href="/blog">
               Blog Posts
@@ -70,7 +66,6 @@ When I’m not coding, you’ll often find me exploring ideas, reflecting on tim
             ))}
           </div>
         </section>
-        <div className='h-1'></div>
       </main>
     </div>
   );

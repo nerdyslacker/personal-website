@@ -31,7 +31,7 @@ const Projects = () => {
   ];
 
   return (
-    <section className="mb-10">
+    <section className="mb-8">
         <h2 className="text-2xl font-bold mb-4 text-white">Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {projects.map((project) => (
@@ -43,7 +43,7 @@ const Projects = () => {
                 </a>
                 </h3>
                 <p className="text-zinc-400 mb-4">{project.description}</p>
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                     <Badge key={tag} variant="outline" className="border-zinc-700 text-zinc-300">
                     {tag}

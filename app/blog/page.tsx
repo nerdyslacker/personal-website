@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-import Sidebar from '@/components/sidebar';
 import Image from 'next/image';
 import Link from 'next/link';
 import { blogs as allBlogs } from "#site/content";
@@ -22,11 +21,8 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen h-full bg-zinc-950">
-      {/* Left Sidebar */}
-      <Sidebar />
-
       {/* Main Content */}
-      <main className="absolute left-90 h-full flex-1 p-8">
+      <main className="h-full flex-1 px-8">
         
         <section className='mb-12'>
           <a href="/" className="inline-flex items-center text-zinc-400 hover:text-white mb-8 group">
