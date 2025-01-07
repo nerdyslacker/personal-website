@@ -16,8 +16,6 @@ export default function Home() {
   const profile = {
     about: `Hi, I’m Karen Sarkissian from Hadrut, Armenia. I am deeply interested in programming and philosophy, especially Stoicism, which inspires my approach to life and work.
 
-As a passionate full-stack developer with over 7 years of experience, I enjoy tackling complex challenges and crafting scalable web applications with elegant solutions that make a meaningful impact.
-
 When I’m not coding, you’ll often find me exploring ideas, reflecting on timeless philosophical principles, or looking for new ways to grow personally and professionally.`,
     blogPosts: blogs
   };
