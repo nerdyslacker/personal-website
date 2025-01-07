@@ -20,7 +20,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex min-h-screen h-full bg-zinc-950">
+    <div className="flex min-h-screen h-full">
       {/* Main Content */}
       <main className="h-full flex-1 px-8">
         
@@ -37,7 +37,7 @@ export default function Home() {
                 key={post.title}
                 className="transition-transform hover:scale-105"
               >
-                <Card key={post.title} className="bg-zinc-900 border-zinc-800 overflow-hidden min-h-full">
+                <Card key={post.title} className="bg-primary-foreground border-primary overflow-hidden min-h-full">
                   <div className="aspect-video relative">
                     <Image
                       src={post.image}

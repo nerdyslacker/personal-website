@@ -39,7 +39,7 @@ export default defineConfig({
   mdx: {
     rehypePlugins: [
       rehypeSlug as any,
-      [rehypePrettyCode, { theme: "slack-dark" }],
+      [rehypePrettyCode, { theme: "catppuccin-mocha" }],
       [
         rehypeAutolinkHeadings,
         {

@@ -20,7 +20,7 @@ const Comments = ({ repo, repoId, category, categoryId }: CommentsProps) => {
 			reactionsEnabled="1"
 			emitMetadata="0"
 			inputPosition="top"
-			theme="noborder_gray"
+			theme="catppuccin_mocha"
 			lang="en"
 			loading="lazy"
 		/>

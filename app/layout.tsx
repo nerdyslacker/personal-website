@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" className="mocha" suppressHydrationWarning>
       <head>
         <link rel="alternate" type="application/rss+xml" title="nerdyslacker's web room » Feed" href="/feed/"></link>
       </head>

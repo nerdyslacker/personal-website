@@ -76,7 +76,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
       </a>
 
       <article className="container max-w-4xl px-8">
-        <h1 className="text-4xl font-bold text-white mb-4">{post.title}</h1>
+        <h1 className="text-4xl font-bold text-primary mb-4">{post.title}</h1>
 
         <div className="flex items-center gap-4 text-zinc-400 mb-6">
           <span className="flex items-center">
@@ -116,7 +116,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
           />
         )}
 
-        <div className="text-zinc-300">
+        <div className="text-pink-200">
           <Mdx code={post.body} />
         </div>
 
