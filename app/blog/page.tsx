@@ -1,11 +1,11 @@
-/* eslint-disable @next/next/no-html-link-for-pages */
+ 
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import Image from 'next/image';
 import Link from 'next/link';
 import { blogs as allBlogs } from "#site/content";
 import { formatDate } from "@/lib/utils";
-import { ChevronLeft } from 'lucide-react';
+// import { ChevronLeft } from 'lucide-react';
 
 export default function Home() {
 
@@ -25,10 +25,10 @@ export default function Home() {
       <main className="h-full flex-1 px-8">
         
         <section className='mb-12'>
-          <a href="/" className="inline-flex items-center text-zinc-400 hover:text-white mb-8 group">
+          {/* <a href="/" className="inline-flex items-center text-zinc-400 hover:text-white mb-8 group">
             <ChevronLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
             Back
-          </a>
+          </a> */}
           <h2 className="text-2xl font-bold mb-4 text-white">Blog Posts</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {profile.blogPosts.map((post, index) => (

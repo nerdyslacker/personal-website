@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+// import localFont from "next/font/local";
+import { Geist_Mono, Lexend } from "next/font/google";
+import "@/styles/globals.css";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { cn } from "@/lib/utils";
+const lexend = Lexend({ subsets: ["latin"], variable: "--font-lexend" });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const fontCode = Geist_Mono({
+  variable: "--font-code",
   subsets: ["latin"],
 });
 
@@ -30,13 +28,17 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" title="nerdyslacker's web room » Feed" href="/feed/"></link>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-950`}
+        className={cn(
+          "min-h-screen antialiased font-lexend bg-zinc-950",
+          lexend.variable,
+          fontCode.variable,
+        )}
       >
         <SidebarProvider>
           <AppSidebar />
           <SidebarInset>
             <main>
-              <SidebarTrigger />
+              <SidebarTrigger className="sticky top-0" />
               {children}
             </main>
           </SidebarInset>
