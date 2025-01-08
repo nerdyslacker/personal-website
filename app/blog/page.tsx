@@ -1,5 +1,8 @@
  
-import React from 'react';
+"use client";
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from "next/navigation";
+import Fuse from "fuse.js";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from 'next/image';
 import Link from 'next/link';
@@ -7,17 +10,37 @@ import { blogs as allBlogs } from "#site/content";
 import { formatDate } from "@/lib/utils";
 // import { ChevronLeft } from 'lucide-react';
 
-export default function Home() {
+export default function Blog() {
+  const searchParams = useSearchParams();
+  const s = searchParams?.get("s");
+  const [filteredPosts, setFilteredPosts] = useState(allBlogs);
 
-  const blogs = allBlogs
-    .filter((blog) => blog.published)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  useEffect(() => {
+    const blogPosts = allBlogs
+      .filter((blog) => blog.published)
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  const profile = {
-    about: "Passionate full-stack developer with 7+ years of experience building scalable web applications. Focused on creating elegant solutions to complex problems.",
+    if (s) {
+      // const filtered = blogPosts.filter(
+      //   (post) =>
+      //     post.title.toLowerCase().includes(s.toLowerCase()) ||
+      //     post.description.toLowerCase().includes(s.toLowerCase()) ||
+      //     post.body.toLowerCase().includes(s.toLowerCase())
+      // );
+      // setFilteredPosts(filtered);
+      const fuse = new Fuse(blogPosts, {
+        keys: ["title", "description", "body"],
+        findAllMatches: true,
+        ignoreLocation: true,
+        threshold: 0.3,
+      });
 
-    blogPosts: blogs
-  };
+      const results = fuse.search(s);
+      setFilteredPosts(results.map((result) => result.item));
+    } else {
+      setFilteredPosts(blogPosts);
+    }
+  }, [s]);
 
   return (
     <div className="flex min-h-screen h-full bg-zinc-950">
@@ -31,7 +54,7 @@ export default function Home() {
           </a> */}
           <h2 className="text-2xl font-bold mb-4 text-white">Blog</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {profile.blogPosts.map((post, index) => (
+            {filteredPosts.map((post, index) => (
               <Link
                 href={`/${post.slug}`} // Add slug to your post data
                 key={post.title}

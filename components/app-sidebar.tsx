@@ -1,3 +1,5 @@
+"use client";
+import { useRouter } from "next/navigation";
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroupContent, SidebarGroupLabel, SidebarHeader } from "@/components/ui/sidebar"
 import Link from 'next/link';
 import Image from 'next/image';
@@ -6,9 +8,15 @@ import { faGithub, faLinkedin, faMastodon } from "@fortawesome/free-brands-svg-i
 import { faRssSquare, faEnvelope, faLocationDot, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Badge } from '@/components/ui/badge';
-// import SearchBar from "./searchbar";
+import SearchBox from "./searchbox";
 
 export function AppSidebar() {
+  const router = useRouter();
+
+  const handleSearch = (query: string) => {
+    router.push(`/blog?s=${query}`);
+  };
+
   const profile = {
     name: "Karen Sarkissian",
     username: "nerdyslacker",
@@ -21,7 +29,7 @@ export function AppSidebar() {
     feed: "nerdyslacker.dev/feed",
     skills: [
       "HTML", "CSS", "JavaScript", "TypeScript", "jQuery", "Vue", "React", "Astro", "NextJS", "C#", ".NET",
-      "Python", "Go", "SQL", "Entity Framework", "Bash", "Git", "Linux", "Docker", "Kubernetes"],
+      "Python", "Go", "SQL", "Entity Framework", "Bash", "Git", "Linux", "Docker", "Kubernetes", "Azure"],
     languages: [
       { language: "Armenian", level: "Native" },
       { language: "English", level: "Fluent" },
@@ -66,30 +74,30 @@ export function AppSidebar() {
         <hr />
       </SidebarHeader>
       <SidebarContent className="p-4">
-        {/* <SidebarGroupContent>
-          <SearchBar />
-        </SidebarGroupContent> */}
+        <SidebarGroupContent>
+          <SearchBox onSearch={handleSearch} />
+        </SidebarGroupContent>
         <SidebarGroupLabel>Social</SidebarGroupLabel>
         <SidebarGroupContent>
           <div className="flex items-center space-y-2">
-            <a href={`https://${profile.feed}`} target='_blank' className="flex items-center text-zinc-400 hover:text-white transition-colors">
-              <FontAwesomeIcon icon={faRssSquare} className="w-9 mr-2" />
-            </a>
             <a href={`mailto:${profile.email}`} className="flex items-center text-zinc-400 hover:text-white transition-colors">
-              <FontAwesomeIcon icon={faEnvelope} className="w-9 mr-2" />
+              <FontAwesomeIcon icon={faEnvelope} className="text-4xl w-9 mr-2" />
               {/* {profile.email} */}
             </a>
             <a href={`https://${profile.github}`} target='_blank' className="flex items-center text-zinc-400 hover:text-white transition-colors">
-              <FontAwesomeIcon icon={faGithub} className="w-9 mr-2" />
+              <FontAwesomeIcon icon={faGithub} className="text-4xl w-9 mr-2" />
               {/* GitHub */}
             </a>
             <a href={`https://${profile.linkedin}`} target='_blank' className="flex items-center text-zinc-400 hover:text-white transition-colors">
-              <FontAwesomeIcon icon={faLinkedin} className="w-9 mr-2" />
+              <FontAwesomeIcon icon={faLinkedin} className="text-4xl w-9 mr-2" />
               {/* LinkedIn */}
             </a>
             <a href={`https://${profile.mastodon}`} target='_blank' className="flex items-center text-zinc-400 hover:text-white transition-colors">
-              <FontAwesomeIcon icon={faMastodon} className="w-9 mr-2" />
+              <FontAwesomeIcon icon={faMastodon} className="text-4xl w-9 mr-2" />
               {/* Mastodon */}
+            </a>
+            <a href={`https://${profile.feed}`} target='_blank' className="flex items-center text-zinc-400 hover:text-white transition-colors">
+              <FontAwesomeIcon icon={faRssSquare} className="text-4xl w-9 mr-2" />
             </a>
           </div>
         </SidebarGroupContent>
