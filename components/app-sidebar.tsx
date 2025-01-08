@@ -9,6 +9,7 @@ import { faRssSquare, faEnvelope, faLocationDot, faCalendarAlt } from "@fortawes
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Badge } from '@/components/ui/badge';
 import SearchBox from "./searchbox";
+import { Suspense } from "react";
 
 export function AppSidebar() {
   const router = useRouter();
@@ -75,7 +76,9 @@ export function AppSidebar() {
       </SidebarHeader>
       <SidebarContent className="p-4">
         <SidebarGroupContent>
-          <SearchBox onSearch={handleSearch} />
+          <Suspense>
+            <SearchBox onSearch={handleSearch} />
+          </Suspense>
         </SidebarGroupContent>
         <SidebarGroupLabel>Social</SidebarGroupLabel>
         <SidebarGroupContent>
