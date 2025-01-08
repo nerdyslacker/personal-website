@@ -6,6 +6,7 @@ import { faGithub, faLinkedin, faMastodon } from "@fortawesome/free-brands-svg-i
 import { faRssSquare, faEnvelope, faLocationDot, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Badge } from '@/components/ui/badge';
+// import SearchBar from "./searchbar";
 
 export function AppSidebar() {
   const profile = {
@@ -65,6 +66,9 @@ export function AppSidebar() {
         <hr />
       </SidebarHeader>
       <SidebarContent className="p-4">
+        {/* <SidebarGroupContent>
+          <SearchBar />
+        </SidebarGroupContent> */}
         <SidebarGroupLabel>Social</SidebarGroupLabel>
         <SidebarGroupContent>
           <div className="flex items-center space-y-2">

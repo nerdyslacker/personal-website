@@ -29,7 +29,7 @@ export default function Home() {
             <ChevronLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
             Back
           </a> */}
-          <h2 className="text-2xl font-bold mb-4 text-white">Blog Posts</h2>
+          <h2 className="text-2xl font-bold mb-4 text-white">Blog</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {profile.blogPosts.map((post, index) => (
               <Link

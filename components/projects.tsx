@@ -27,6 +27,12 @@ const Projects = () => {
         description: "Seamlessly merge your reporting outputs into US-eCTD compliant PDF documents with just a few clicks",
         link: "keycombine.armatanalytics.com",
         tags: ["C#", "JavaScript"]
+    },
+    {
+        title: "Newsletry",
+        description: "Discover and read awesome newsletters. All in one place. Keep your inbox neat & organized",
+        link: "newsletry.com",
+        tags: ["C#", "JavaScript"]
     }
   ];
 
