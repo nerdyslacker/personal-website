@@ -4,7 +4,7 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarGroupContent, SidebarGro
 import Link from 'next/link';
 import Image from 'next/image';
 import WebRing from "./webring";
-import { faGithub, faLinkedin, faMastodon } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin, faMastodon, faReddit } from "@fortawesome/free-brands-svg-icons";
 import { faRssSquare, faEnvelope, faLocationDot, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Badge } from '@/components/ui/badge';
@@ -25,7 +25,8 @@ export function AppSidebar() {
     avatar: "/avatar.jpg",
     email: "karyan40024@gmail.com",
     github: "github.com/nerdyslacker",
-    linkedin: "linkedin.com/in/karen-sarkissian-b2a741140",
+    linkedin: "linkedin.com/in/karen-sarkissian",
+    reddit: "reddit.com/user/karyan40024",
     mastodon: "mastodon.social/@nerdyslacker",
     feed: "nerdyslacker.dev/feed",
     skills: [
@@ -84,7 +85,7 @@ export function AppSidebar() {
         <SidebarGroupContent>
           <div className="flex items-center space-y-2">
             <a href={`mailto:${profile.email}`} className="flex items-center text-zinc-400 hover:text-white transition-colors">
-              <FontAwesomeIcon icon={faEnvelope} className="text-4xl w-9 mr-2" />
+              <FontAwesomeIcon icon={faEnvelope} className="text-4xl w-9 mr-2 mt-2" />
               {/* {profile.email} */}
             </a>
             <a href={`https://${profile.github}`} target='_blank' className="flex items-center text-zinc-400 hover:text-white transition-colors">
@@ -94,6 +95,10 @@ export function AppSidebar() {
             <a href={`https://${profile.linkedin}`} target='_blank' className="flex items-center text-zinc-400 hover:text-white transition-colors">
               <FontAwesomeIcon icon={faLinkedin} className="text-4xl w-9 mr-2" />
               {/* LinkedIn */}
+            </a>
+            <a href={`https://${profile.reddit}`} target='_blank' className="flex items-center text-zinc-400 hover:text-white transition-colors">
+              <FontAwesomeIcon icon={faReddit} className="text-4xl w-9 mr-2" />
+              {/* Reddit */}
             </a>
             <a href={`https://${profile.mastodon}`} target='_blank' className="flex items-center text-zinc-400 hover:text-white transition-colors">
               <FontAwesomeIcon icon={faMastodon} className="text-4xl w-9 mr-2" />
