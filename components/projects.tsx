@@ -12,7 +12,7 @@ const Projects = () => {
     },
     {
         title: "LazyLinux",
-        description: "A pre-configured distro based on Void Linux featuring XFCE desktop and kernel version 6.6 LTS to provide a stable and user-friendly experience",
+        description: "A pre-configured distro based on Void Linux featuring XFCE desktop and kernel version 6.13.2 to provide a stable and user-friendly experience",
         link: "lazylinuxos.github.io",
         tags: ["Linux", "Bash"]
     },
