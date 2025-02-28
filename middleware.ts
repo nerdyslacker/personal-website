@@ -27,6 +27,11 @@ export function middleware (request: NextRequest) {
             {
                 "rel":"http://ostatus.org/schema/1.0/subscribe",
                 "template":"https://mastodon.social/authorize_interaction?uri={uri}"
+            },
+            {
+            "rel": "http://webfinger.net/rel/avatar",
+            "type": "image/jpeg",
+            "href": "https://files.mastodon.social/accounts/avatars/113/717/805/595/008/562/original/de37983deeb9a9d8.jpg"
             }
         ]
     }
