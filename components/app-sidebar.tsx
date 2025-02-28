@@ -30,8 +30,8 @@ export function AppSidebar() {
     mastodon: "mastodon.social/@nerdyslacker",
     feed: "nerdyslacker.dev/feed",
     skills: [
-      "HTML", "CSS", "JavaScript", "TypeScript", "jQuery", "Vue", "React", "Astro", "NextJS", "C#", ".NET",
-      "Python", "Go", "SQL", "Entity Framework", "Bash", "Git", "Linux", "Docker", "Kubernetes", "Azure"],
+      "HTML", "CSS", "JavaScript", "TypeScript", "jQuery", "Vue", "React", "Next", "Astro", "C#", ".NET",
+      "Python", "Go",  "Wails", "SQL", "Entity Framework", "Bash", "Git", "Linux", "Docker", "Kubernetes", "Azure"],
     languages: [
       { language: "Armenian", level: "Native" },
       { language: "English", level: "Fluent" },
