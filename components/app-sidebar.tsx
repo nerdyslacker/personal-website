@@ -65,8 +65,8 @@ export function AppSidebar() {
             <Image
               src={profile.avatar}
               alt={profile.name}
-              width={`150`}
-              height={`150`}
+              width={`170`}
+              height={`170`}
               className="rounded-full mb-4"
             />
           </Link>
