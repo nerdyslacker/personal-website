@@ -48,8 +48,8 @@ const Posts = () => {
                     key={post.title}
                     className="transition-transform hover:scale-105"
                 >
-                    <Card key={post.title} className="bg-zinc-900 border-zinc-800 overflow-hidden min-h-full">
-                        <div className="aspect-video relative">
+                    <Card key={post.title} className="bg-zinc-900 border-[#917E6B] overflow-hidden min-h-full transition-colors hover:border-[#fed06c]">
+                        <div className="aspect-video relative border-b border-[#917E6B]">
                             <Image
                                 src={post.image}
                                 alt={post.title}
@@ -59,7 +59,7 @@ const Posts = () => {
                             />
                         </div>
                         <CardContent className="pt-6">
-                            <h3 className="text-xl font-semibold mb-2 text-white">{post.title}</h3>
+                            <h3 className="text-xl font-semibold mb-2 text-[#fed06c]">{post.title}</h3>
                             <p className="text-sm text-zinc-500 mb-2">{formatDate(post.date)}</p>
                             <p className="text-zinc-400">{post.description}</p>
                         </CardContent>

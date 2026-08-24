@@ -5,9 +5,8 @@ const WebRing = () => {
     fontFamily: "monospace",
     textAlign: "center" as const,
     padding: "0.5rem",
-    border: "solid #2a2627 0.1rem",
-    borderRadius: "5px",
-    backgroundColor: "#1b1718"
+    border: "solid #917E6B 0.05rem",
+    backgroundColor: "#121110"
   };
 
   const linkStyle = {

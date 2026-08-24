@@ -26,7 +26,7 @@ export default function SearchBox({ onSearch }: any) {
         onChange={(e) => setSearchQuery(e.target.value)}
         onKeyDown={handleKeyPress}
         className="bg-zinc-300 text-zinc-800 px-3 py-2 w-80" placeholder="Search..." />
-      <Button onClick={handleSearch} className="bg-zinc-800 border-zinc-800 text-zinc-300 hover:bg-zinc-700 px-3 py-2">
+      <Button onClick={handleSearch} className="bg-zinc-800 border-[#917E6B] text-zinc-300 hover:bg-zinc-700 px-3 py-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

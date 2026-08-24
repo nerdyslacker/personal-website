@@ -90,7 +90,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
                 alt={post.author}
                 width={32}
                 height={32}
-                className="rounded-full bg-white"
+                className="border border-[#917E6B] bg-white"
               />
               <p className="font-medium text-muted-foreground">@{post.author}</p>
             </div>

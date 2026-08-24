@@ -1,7 +1,7 @@
 'use client';
- 
+
 import Giscus from '@giscus/react';
- 
+
 interface CommentsProps {
   repo: `${string}/${string}`,
   repoId: string,
@@ -20,11 +20,11 @@ const Comments = ({ repo, repoId, category, categoryId }: CommentsProps) => {
 			reactionsEnabled="1"
 			emitMetadata="0"
 			inputPosition="top"
-			theme="noborder_gray"
+			theme="transparent_dark"
 			lang="en"
 			loading="lazy"
 		/>
 	);
 };
- 
+
 export default Comments;

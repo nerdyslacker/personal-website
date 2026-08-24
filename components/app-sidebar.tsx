@@ -60,14 +60,14 @@ export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader>
-        <div className="flex flex-col items-center mb-6">
+        <div className="flex flex-col items-center mb-2">
           <Link href="/">
             <Image
               src={profile.avatar}
               alt={profile.name}
               width={`170`}
               height={`170`}
-              className="rounded-full mb-4"
+              className="border border-[#917E6B] mb-4"
             />
           </Link>
           <h1 className="text-xl font-bold text-white">{profile.name}</h1>
@@ -112,11 +112,11 @@ export function AppSidebar() {
 
         <SidebarGroupLabel>Work Experience</SidebarGroupLabel>
         <SidebarGroupContent>
-          <div className="relative border-l-2 border-zinc-800 ml-2">
+          <div className="relative border-l-2 border-[#917E6B] ml-2">
             {profile.experiences.map((experience, index) => (
               <div key={index} className="ml-4">
                 {/* Timeline dot */}
-                <div className="absolute w-4 h-4 bg-zinc-800 rounded-full -left-2 border-2 border-black" />
+                <div className="absolute w-4 h-4 bg-zinc-800 -left-2 border-2 border-black" />
 
                 {/* Content */}
                 <div className="pl-6">

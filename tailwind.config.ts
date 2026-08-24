@@ -36,6 +36,22 @@ const config = {
                 ]
   		},
   		colors: {
+  			// Srcery palette overrides for hardcoded utility classes
+  			zinc: {
+  				'50': '#FCE8C3',
+  				'100': '#FCE8C3',
+  				'200': '#FCE8C3',
+  				'300': '#C5B088',
+  				'400': '#b8a57f',
+  				'500': '#45433E',
+  				'600': '#262522',
+  				'700': '#312F2C',
+  				'800': '#3B3935',
+  				'900': '#121110',
+  				'950': '#121110'
+  			},
+  			white: '#FCE8C3',
+  			black: '#121110',
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
@@ -81,9 +97,9 @@ const config = {
   			}
   		},
   		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
+  			lg: '0px',
+  			md: '0px',
+  			sm: '0px'
   		},
   		keyframes: {
   			'accordion-down': {

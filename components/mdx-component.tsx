@@ -105,7 +105,7 @@ const components = {
     ...props
   }: React.ImgHTMLAttributes<HTMLImageElement>) => (
     // eslint-disable-next-line @next/next/no-img-element
-    <img className={cn("rounded-md border", className)} alt={alt} {...props} />
+    <img className={cn("border", className)} alt={alt} {...props} />
   ),
   hr: ({ ...props }) => <hr className="my-4 md:my-8" {...props} />,
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
@@ -140,7 +140,7 @@ const components = {
   pre: ({ className, ...props }: ComponentsProps) => (
     <pre
       className={cn(
-        "mb-4 mt-6 overflow-x-auto text-sm  rounded-lg border !bg-secondary py-4",
+        "mb-4 mt-6 overflow-x-auto text-sm border !bg-secondary py-4",
         className,
       )}
       {...props}
@@ -149,7 +149,7 @@ const components = {
   code: ({ className, ...props }: ComponentsProps) => (
     <code
       className={cn(
-        "relative rounded border px-[0.3rem] py-[0.2rem] !bg-secondary font-code font-light !text-sm",
+        "relative border px-[0.3rem] py-[0.2rem] !bg-secondary font-code font-light !text-sm",
         className,
       )}
       {...props}
