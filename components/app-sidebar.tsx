@@ -49,7 +49,7 @@ export function AppSidebar() {
       {
         company: "Data Reply",
         website: "www.reply.com/data-reply/en/",
-        role: "DevOps Engineer",
+        role: "DevOps Engineer/Data Engineer",
         icon: "",
         period: "2021 - Present",
         location: "Munich, DE",

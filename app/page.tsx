@@ -21,7 +21,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex min-h-screen h-full bg-zinc-950">
+    <div className="flex min-h-screen h-full">
       {/* Main Content */}
       <main className="h-full flex-1 px-8">
         <section className="mb-8 max-w-4xl">

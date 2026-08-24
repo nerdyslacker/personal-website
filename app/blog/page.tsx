@@ -10,7 +10,7 @@ export default function Blog() {
 //       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
-    <div className="flex min-h-screen h-full bg-zinc-950">
+    <div className="flex min-h-screen h-full">
       <main className="h-full flex-1 px-8">
         <section className='mb-12'>
           {/* <a href="/" className="inline-flex items-center text-zinc-400 hover:text-white mb-8 group">

@@ -75,7 +75,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
         Back to all posts
       </a>
 
-      <article className="container max-w-4xl px-8">
+      <article className="container max-w-4xl px-8 py-8 mb-8 bg-[#121110]/[0.96] border border-[#917E6B]">
         <h1 className="text-4xl font-bold text-white mb-4">{post.title}</h1>
 
         <div className="flex items-center gap-4 text-zinc-400 mb-6">
