@@ -25,6 +25,11 @@ const nextConfig = {
 				source: '/(.*)',
 				headers: securityHeaders,
 			},
+			// giscus fetches the custom theme CSS cross-origin from giscus.app
+			{
+				source: '/giscus-srcery.css',
+				headers: [{ key: 'Access-Control-Allow-Origin', value: '*' }],
+			},
 		];
 	},
   webpack: (config) => {

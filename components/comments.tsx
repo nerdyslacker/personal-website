@@ -20,7 +20,7 @@ const Comments = ({ repo, repoId, category, categoryId }: CommentsProps) => {
 			reactionsEnabled="1"
 			emitMetadata="0"
 			inputPosition="top"
-			theme="transparent_dark"
+			theme="https://nerdyslacker.dev/giscus-srcery.css"
 			lang="en"
 			loading="lazy"
 		/>
