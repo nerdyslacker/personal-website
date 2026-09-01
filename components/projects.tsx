@@ -18,12 +18,6 @@ const Projects = () => {
         tags: ["Linux", "Bash"]
     },
     {
-        title: "Blackhole-VL",
-        description: "Unofficial community-driven user repository for Void Linux, providing additional XBPS packages, along with templates and build scripts",
-        link: "black-hole.dev",
-        tags: ["Linux", "Bash"]
-    },
-    {
         title: "Cattail",
         description: "An unofficial tailscale/headscale client for Linux and Windows",
         link: "github.com/nerdyslacker/cattail",
