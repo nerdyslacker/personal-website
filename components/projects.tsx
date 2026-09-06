@@ -24,6 +24,12 @@ const Projects = () => {
         tags: ["Go", "Wails", "Vue", "Javascript"]
     },
     {
+        title: "skarwm",
+        description: "A small keyboard-driven scrollable X11 window manager",
+        link: "github.com/nerdyslacker/skarwm",
+        tags: ["Linux", "Odin", "QML"]
+    },    
+    {
         title: "KeyCombine",
         description: "Seamlessly merge your reporting outputs into US-eCTD compliant PDF documents with just a few clicks",
         link: "keycombine.armatanalytics.com",
