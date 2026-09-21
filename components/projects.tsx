@@ -15,7 +15,7 @@ const Projects = () => {
         title: "LazyLinux",
         description: "A pre-configured distro based on Void Linux featuring XFCE desktop and stable kernel version to provide a stable and user-friendly experience",
         link: "lazylinuxos.github.io",
-        tags: ["Linux", "Bash"]
+        tags: ["Linux", "Shell"]
     },
     {
         title: "Cattail",
@@ -27,18 +27,18 @@ const Projects = () => {
         title: "skarwm",
         description: "A small keyboard-driven scrollable X11 window manager",
         link: "github.com/nerdyslacker/skarwm",
-        tags: ["Linux", "Odin", "QML"]
+        tags: ["Odin", "Linux"]
+    },
+    {
+        title: "anush",
+        description: "Desktop shell crafted for X11/XLibre (skarwm)",
+        link: "https://github.com/nerdyslacker/anush",
+        tags: ["QML", "Odin", "Python", "Shell", "Linux"]
     },    
     {
         title: "KeyCombine",
         description: "Seamlessly merge your reporting outputs into US-eCTD compliant PDF documents with just a few clicks",
         link: "keycombine.armatanalytics.com",
-        tags: ["C#", "JavaScript"]
-    },
-    {
-        title: "Newsletry",
-        description: "Discover and read awesome newsletters. All in one place. Keep your inbox neat & organized",
-        link: "newsletry.com",
         tags: ["C#", "JavaScript"]
     }
   ];
