@@ -34,6 +34,24 @@ const Projects = () => {
         description: "Desktop shell crafted for X11/XLibre (skarwm)",
         link: "https://github.com/nerdyslacker/anush",
         tags: ["QML", "Odin", "Python", "Shell", "Linux"]
+    },
+    {
+        title: "nare",
+        description: "GPU-accelerated terminal emulator written in Odin",
+        link: "github.com/nerdyslacker/nare",
+        tags: ["Odin", "Linux"]
+    },
+    {
+        title: "minni",
+        description: "Standalone Clipboard Manager in Odin",
+        link: "github.com/nerdyslacker/minni",
+        tags: ["Odin", "Linux"]
+    },
+    {
+        title: "priyomnik",
+        description: "Minimal internet radio tray player",
+        link: "github.com/nerdyslacker/priyomnik",
+        tags: ["Go"]
     },    
     {
         title: "KeyCombine",
